@@ -5,14 +5,12 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
-    "windows": "react-native run-windows"
+    "lint": "eslint ."
   },
   "dependencies": {
     "react": "^17.0.2",
     "react-native": "^0.68.5",
-    "react-native-code-push": "^8.1.0",
-    "react-native-windows": "^1.0.0"
+    "react-native-code-push": "^8.1.0"
   },
   "resolutions": {
     "strip-ansi": "^6.0.1",
