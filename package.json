@@ -1,14 +1,15 @@
 {
-  "name": "react-native-code-push",
+  "name": "@releasium/react-native-code-push",
   "version": "9.0.1",
-  "description": "React Native plugin for the CodePush service",
-  "main": "CodePush.js",
-  "typings": "typings/react-native-code-push.d.ts",
+  "description": "React Native plugin for the ReleasiumCodePush service - a fork of Microsoft's CodePush with support for custom OTA update servers",
+  "main": "ReleasiumCodePush.js",
+  "typings": "typings/releasium-react-native-code-push.d.ts",
   "homepage": "https://microsoft.github.io/code-push",
   "keywords": [
     "react-native",
     "code",
-    "push"
+    "push",
+    "releasium"
   ],
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -65,7 +66,7 @@
   },
   "rnpm": {
     "android": {
-      "packageInstance": "new CodePush(getResources().getString(R.string.CodePushDeploymentKey), getApplicationContext(), BuildConfig.DEBUG)"
+      "packageInstance": "new ReleasiumCodePush(getResources().getString(R.string.CodePushDeploymentKey), getApplicationContext(), BuildConfig.DEBUG)"
     },
     "ios": {
       "sharedLibraries": [
@@ -73,8 +74,8 @@
       ]
     },
     "commands": {
-      "postlink": "node node_modules/react-native-code-push/scripts/postlink/run",
-      "postunlink": "node node_modules/react-native-code-push/scripts/postunlink/run"
+      "postlink": "node node_modules/@releasium/react-native-code-push/scripts/postlink/run",
+      "postunlink": "node node_modules/@releasium/react-native-code-push/scripts/postunlink/run"
     }
   }
 }

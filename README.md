@@ -1,6 +1,10 @@
+# ReleasiumCodePush: React Native Module for OTA Updates
+
+> This is a fork of Microsoft's CodePush with support for custom OTA update servers.
+
 [![appcenterbanner](https://user-images.githubusercontent.com/31293287/32969262-3cc5d48a-cb99-11e7-91bf-fa57c67a371c.png)](http://microsoft.github.io/code-push/)
 
-#### [Sign up With App Center](https://appcenter.ms/signup?utm_source=CodePush&utm_medium=Azure) to use CodePush
+#### [Sign up With App Center](https://appcenter.ms/signup?utm_source=CodePush&utm_medium=Azure) to use ReleasiumCodePush or configure your own custom update server
 
 # React Native Module for CodePush
 > [!WARNING]
@@ -10,7 +14,7 @@
 
 ![Switching tags](https://user-images.githubusercontent.com/42337914/57237511-0835de80-7030-11e9-88fa-64eb200478d0.png)
 
-This plugin provides client-side integration for the [CodePush service](https://microsoft.github.io/code-push/), allowing you to easily add a dynamic update experience to your React Native app(s).
+This plugin provides client-side integration for the [ReleasiumCodePush service](https://microsoft.github.io/code-push/), allowing you to easily add a dynamic update experience to your React Native app(s).
 
 <!-- React Native Catalog -->
 
@@ -42,20 +46,20 @@ This plugin provides client-side integration for the [CodePush service](https://
 
 A React Native app is composed of JavaScript files and any accompanying [images](https://reactnative.dev/docs/image), which are bundled together by the [metro bundler](https://github.com/facebook/metro) and distributed as part of a platform-specific binary (i.e. an `.ipa` or `.apk` file). Once the app is released, updating either the JavaScript code (e.g. making bug fixes, adding new features) or image assets, requires you to recompile and redistribute the entire binary, which of course, includes any review time associated with the store(s) you are publishing to.
 
-The CodePush plugin helps get product improvements in front of your end users instantly, by keeping your JavaScript and images synchronized with updates you release to the CodePush server. This way, your app gets the benefits of an offline mobile experience, as well as the "web-like" agility of side-loading updates as soon as they are available. It's a win-win!
+The ReleasiumCodePush plugin helps get product improvements in front of your end users instantly, by keeping your JavaScript and images synchronized with updates you release to the ReleasiumCodePush server. This way, your app gets the benefits of an offline mobile experience, as well as the "web-like" agility of side-loading updates as soon as they are available. It's a win-win!
 
-In order to ensure that your end users always have a functioning version of your app, the CodePush plugin maintains a copy of the previous update, so that in the event that you accidentally push an update which includes a crash, it can automatically roll back. This way, you can rest assured that your newfound release agility won't result in users becoming blocked before you have a chance to [roll back](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/cli#rolling-back-updates) on the server. It's a win-win-win!
+In order to ensure that your end users always have a functioning version of your app, the ReleasiumCodePush plugin maintains a copy of the previous update, so that in the event that you accidentally push an update which includes a crash, it can automatically roll back. This way, you can rest assured that your newfound release agility won't result in users becoming blocked before you have a chance to [roll back](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/cli#rolling-back-updates) on the server. It's a win-win-win!
 
-*Note: Any product changes which touch native code (e.g. modifying your `AppDelegate.m`/`MainActivity.java` file, adding a new plugin) cannot be distributed via CodePush, and therefore, must be updated via the appropriate store(s).*
+*Note: Any product changes which touch native code (e.g. modifying your `AppDelegate.m`/`MainActivity.java` file, adding a new plugin) cannot be distributed via ReleasiumCodePush, and therefore, must be updated via the appropriate store(s).*
 
 ## Supported React Native platforms
 
 - iOS (7+)
 - Android (4.1+) on TLS 1.2 compatible devices
 
-We try our best to maintain backwards compatibility of our plugin with previous versions of React Native, but due to the nature of the platform, and the existence of breaking changes between releases, it is possible that you need to use a specific version of the CodePush plugin in order to support the exact version of React Native you are using. The following table outlines which CodePush plugin versions officially support the respective React Native versions:
+We try our best to maintain backwards compatibility of our plugin with previous versions of React Native, but due to the nature of the platform, and the existence of breaking changes between releases, it is possible that you need to use a specific version of the ReleasiumCodePush plugin in order to support the exact version of React Native you are using. The following table outlines which ReleasiumCodePush plugin versions officially support the respective React Native versions:
 
-| React Native version(s) | Supporting CodePush version(s)                        |
+| React Native version(s) | Supporting ReleasiumCodePush version(s)                        |
 |-------------------------|-------------------------------------------------------|
 | <0.14                   | **Unsupported**                                       |
 | v0.14                   | v1.3 *(introduced Android support)*                   |
@@ -84,7 +88,7 @@ We work hard to respond to new RN releases, but they do occasionally break us. W
 
 ### Supported Components
 
-When using the React Native assets system (i.e. using the `require("./foo.png")` syntax), the following list represents the set of core components (and props) that support having their referenced images and videos updated via CodePush:
+When using the React Native assets system (i.e. using the `require("./foo.png")` syntax), the following list represents the set of core components (and props) that support having their referenced images and videos updated via ReleasiumCodePush:
 
 | Component                                       | Prop(s)                                  |
 |-------------------------------------------------|------------------------------------------|
@@ -95,16 +99,16 @@ When using the React Native assets system (i.e. using the `require("./foo.png")`
 | `ToolbarAndroid` <br />*(React Native 0.21.0+)* | `actions[].icon`, `logo`, `overflowIcon` |
 | `Video`                                         | `source`                                 |
 
-The following list represents the set of components (and props) that don't currently support their assets being updated via CodePush, due to their dependency on static images and videos (i.e. using the `{ uri: "foo" }` syntax):
+The following list represents the set of components (and props) that don't currently support their assets being updated via ReleasiumCodePush, due to their dependency on static images and videos (i.e. using the `{ uri: "foo" }` syntax):
 
 | Component   | Prop(s)                                                              |
 |-------------|----------------------------------------------------------------------|
 | `SliderIOS` | `maximumTrackImage`, `minimumTrackImage`, `thumbImage`, `trackImage` |
 | `Video`     | `source`                                                             |
 
-As new core components are released, which support referencing assets, we'll update this list to ensure users know what exactly they can expect to update using CodePush.
+As new core components are released, which support referencing assets, we'll update this list to ensure users know what exactly they can expect to update using ReleasiumCodePush.
 
-*Note: CodePush only works with Video components when using `require` in the source prop. For example:*
+*Note: ReleasiumCodePush only works with Video components when using `require` in the source prop. For example:*
 
 ```javascript
 <Video source={require("./foo.mp4")} />
@@ -112,15 +116,15 @@ As new core components are released, which support referencing assets, we'll upd
 
 ## Getting Started
 
-Once you've followed the general-purpose ["getting started"](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/index) instructions for setting up your CodePush account, you can start CodePush-ifying your React Native app by running the following command from within your app's root directory:
+Once you've followed the general-purpose ["getting started"](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/index) instructions for setting up your ReleasiumCodePush account, you can start ReleasiumCodePush-ifying your React Native app by running the following command from within your app's root directory:
 
 ```shell
-npm install --save react-native-code-push
+npm install --save @releasium/react-native-code-push
 ```
 
-As with all other React Native plugins, the integration experience is different for iOS and Android, so perform the following setup steps depending on which platform(s) you are targeting. Note, if you are targeting both platforms it is recommended to create separate CodePush applications for each platform.
+As with all other React Native plugins, the integration experience is different for iOS and Android, so perform the following setup steps depending on which platform(s) you are targeting. Note, if you are targeting both platforms it is recommended to create separate ReleasiumCodePush applications for each platform.
 
-If you want to see how other projects have integrated with CodePush, you can check out the excellent [example apps](#example-apps--starters) provided by the community. Additionally, if you'd like to quickly familiarize yourself with CodePush + React Native, you can check out the awesome getting started videos produced by [Bilal Budhani](https://www.youtube.com/watch?v=uN0FRWk-YW8&feature=youtu.be) and/or [Deepak Sisodiya ](https://www.youtube.com/watch?v=f6I9y7V-Ibk).
+If you want to see how other projects have integrated with ReleasiumCodePush, you can check out the excellent [example apps](#example-apps--starters) provided by the community. Additionally, if you'd like to quickly familiarize yourself with ReleasiumCodePush + React Native, you can check out the awesome getting started videos produced by [Bilal Budhani](https://www.youtube.com/watch?v=uN0FRWk-YW8&feature=youtu.be) and/or [Deepak Sisodiya ](https://www.youtube.com/watch?v=f6I9y7V-Ibk).
 
 *NOTE: This guide assumes you have used the `react-native init` command to initialize your React Native project. As of March 2017, the command `create-react-native-app` can also be used to initialize a React Native project. If using this command, please run `npm run eject` in your project's home directory to get a project very similar to what `react-native init` would have created.*
 
@@ -131,36 +135,36 @@ Then continue with installing the native module
 
 ## Plugin Usage
 
-With the CodePush plugin downloaded and linked, and your app asking CodePush where to get the right JS bundle from, the only thing left is to add the necessary code to your app to control the following policies:
+With the ReleasiumCodePush plugin downloaded and linked, and your app asking ReleasiumCodePush where to get the right JS bundle from, the only thing left is to add the necessary code to your app to control the following policies:
 
 1. When (and how often) to check for an update? (for example app start, in response to clicking a button in a settings page, periodically at some fixed interval)
 
 2. When an update is available, how to present it to the end user?
 
-The simplest way to do this is to "CodePush-ify" your app's root component. To do so, you can choose one of the following two options:
+The simplest way to do this is to "ReleasiumCodePush-ify" your app's root component. To do so, you can choose one of the following two options:
 
-* **Option 1: Wrap your root component with the `codePush` higher-order component:**
+* **Option 1: Wrap your root component with the `releasiumCodePush` higher-order component:**
 
   * For class component
 
     ```javascript
-    import codePush from "react-native-code-push";
+    import ReleasiumCodePush from "@releasium/react-native-code-push";
 
     class MyApp extends Component {
     }
 
-    MyApp = codePush(MyApp);
+    MyApp = ReleasiumCodePush(MyApp);
     ```
 
   * For functional component
 
     ```javascript
-    import codePush from "react-native-code-push";
+    import ReleasiumCodePush from "@releasium/react-native-code-push";
 
     let MyApp: () => React$Node = () => {
     }
 
-    MyApp = codePush(MyApp);
+    MyApp = ReleasiumCodePush(MyApp);
     ```
 
 * **Option 2: Use the [ES7 decorator](https://github.com/wycats/javascript-decorators) syntax:**
@@ -170,9 +174,9 @@ The simplest way to do this is to "CodePush-ify" your app's root component. To d
   * For class component
 
     ```javascript
-    import codePush from "react-native-code-push";
+    import ReleasiumCodePush from "@releasium/react-native-code-push";
 
-    @codePush
+    @ReleasiumCodePush
     class MyApp extends Component {
     }
     ```
@@ -180,50 +184,50 @@ The simplest way to do this is to "CodePush-ify" your app's root component. To d
   * For functional component
 
     ```javascript
-    import codePush from "react-native-code-push";
+    import ReleasiumCodePush from "@releasium/react-native-code-push";
 
     const MyApp: () => React$Node = () => {
     }
 
-    export default codePush(MyApp);
+    export default ReleasiumCodePush(MyApp);
     ```
 
-By default, CodePush will check for updates on every app start. If an update is available, it will be silently downloaded, and installed the next time the app is restarted (either explicitly by the end user or by the OS), which ensures the least invasive experience for your end users. If an available update is mandatory, then it will be installed immediately, ensuring that the end user gets it as soon as possible.
+By default, ReleasiumCodePush will check for updates on every app start. If an update is available, it will be silently downloaded, and installed the next time the app is restarted (either explicitly by the end user or by the OS), which ensures the least invasive experience for your end users. If an available update is mandatory, then it will be installed immediately, ensuring that the end user gets it as soon as possible.
 
-If you would like your app to discover updates more quickly, you can also choose to sync up with the CodePush server every time the app resumes from the background.
+If you would like your app to discover updates more quickly, you can also choose to sync up with the ReleasiumCodePush server every time the app resumes from the background.
 
 * For class component
 
     ```javascript
-    let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+    let releasiumCodePushOptions = { checkFrequency: ReleasiumCodePush.CheckFrequency.ON_APP_RESUME };
 
     class MyApp extends Component {
     }
 
-    MyApp = codePush(codePushOptions)(MyApp);
+    MyApp = ReleasiumCodePush(releasiumCodePushOptions)(MyApp);
     ```
 
 * For functional component
 
     ```javascript
-    let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+    let releasiumCodePushOptions = { checkFrequency: ReleasiumCodePush.CheckFrequency.ON_APP_RESUME };
 
     let MyApp: () => React$Node = () => {
     }
 
-    MyApp = codePush(codePushOptions)(MyApp);
+    MyApp = ReleasiumCodePush(releasiumCodePushOptions)(MyApp);
     ```
 
-Alternatively, if you want fine-grained control over when the check happens (like a button press or timer interval), you can call [`CodePush.sync()`](docs/api-js.md#codepushsync) at any time with your desired `SyncOptions`, and optionally turn off CodePush's automatic checking by specifying a manual `checkFrequency`:
+Alternatively, if you want fine-grained control over when the check happens (like a button press or timer interval), you can call [`ReleasiumCodePush.sync()`](docs/api-js.md#releasiumcodepushsync) at any time with your desired `SyncOptions`, and optionally turn off ReleasiumCodePush's automatic checking by specifying a manual `checkFrequency`:
 
 ```javascript
-let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+let releasiumCodePushOptions = { checkFrequency: ReleasiumCodePush.CheckFrequency.MANUAL };
 
 class MyApp extends Component {
     onButtonPress() {
-        codePush.sync({
+        ReleasiumCodePush.sync({
             updateDialog: true,
-            installMode: codePush.InstallMode.IMMEDIATE
+            installMode: ReleasiumCodePush.InstallMode.IMMEDIATE
         });
     }
 
@@ -238,23 +242,23 @@ class MyApp extends Component {
     }
 }
 
-MyApp = codePush(codePushOptions)(MyApp);
+MyApp = ReleasiumCodePush(releasiumCodePushOptions)(MyApp);
 ```
 
-If you would like to display an update confirmation dialog (an "active install"), configure when an available update is installed (like force an immediate restart) or customize the update experience in any other way, refer to the [`codePush()`](docs/api-js.md#codepush) API reference for information on how to tweak this default behavior.
+If you would like to display an update confirmation dialog (an "active install"), configure when an available update is installed (like force an immediate restart) or customize the update experience in any other way, refer to the [`releasiumCodePush()`](docs/api-js.md#releasiumcodepush) API reference for information on how to tweak this default behavior.
 
 *NOTE: If you are using [Redux](http://redux.js.org) and [Redux Saga](https://redux-saga.js.org/), you can alternatively use the [react-native-code-push-saga](http://github.com/lostintangent/react-native-code-push-saga) module, which allows you to customize when `sync` is called in a perhaps simpler/more idiomatic way.*
 
 ### Store Guideline Compliance
 
-Android Google Play and iOS App Store have corresponding guidelines that have rules you should be aware of before integrating the CodePush solution within your application.
+Android Google Play and iOS App Store have corresponding guidelines that have rules you should be aware of before integrating the ReleasiumCodePush solution within your application.
 
 #### Google play
 
 Third paragraph of [Device and Network Abuse](https://support.google.com/googleplay/android-developer/answer/9888379?hl=en) topic describe that updating source code by any method other than Google Play's update mechanism is restricted. But this restriction does not apply to updating javascript bundles.
 > This restriction does not apply to code that runs in a virtual machine and has limited access to Android APIs (such as JavaScript in a webview or browser).
 
-That fully allow CodePush as it updates just JS bundles and can't update native code part.
+That fully allow ReleasiumCodePush as it updates just JS bundles and can't update native code part.
 
 #### App Store
 
@@ -262,7 +266,7 @@ Paragraph **3.3.2**, since back in 2015's [Apple Developer Program License Agree
 
 > Interpreted code may be downloaded to an Application but only so long as such code: (a) does not change the primary purpose of the Application by providing features or functionality that are inconsistent with the intended and advertised purpose of the Application as submitted to the App Store, (b) does not create a store or storefront for other code or applications, and (c) does not bypass signing, sandbox, or other security features of the OS.
 
-CodePush allows you to follow these rules in full compliance so long as the update you push does not significantly deviate your product from its original App Store approved intent.
+ReleasiumCodePush allows you to follow these rules in full compliance so long as the update you push does not significantly deviate your product from its original App Store approved intent.
 
 To further remain in compliance with Apple's guidelines we suggest that App Store-distributed apps don't enable the `updateDialog` option when calling `sync`, since in the [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) it is written that:
 
@@ -272,7 +276,7 @@ This is not necessarily the case for `updateDialog`, since it won't force the us
 
 ## Releasing Updates
 
-Once your app is configured and distributed to your users, and you have made some JS or asset changes, it's time to release them. The recommended way to release them is using the `release-react` command in the App Center CLI, which will bundle your JavaScript files, asset files, and release the update to the CodePush server.
+Once your app is configured and distributed to your users, and you have made some JS or asset changes, it's time to release them. The recommended way to release them is using the `release-react` command in the App Center CLI, which will bundle your JavaScript files, asset files, and release the update to the ReleasiumCodePush server.
 
 *NOTE: Before you can start releasing updates, please log into App Center by running the `appcenter login` command.*
 
@@ -304,23 +308,23 @@ appcenter codepush release-react -a <ownerName>/MyApp-Android  --target-binary-v
 
 ```
 
-The CodePush client supports differential updates, so even though you are releasing your JS bundle and assets on every update, your end users will only actually download the files they need. The service handles this automatically so that you can focus on creating awesome apps and we can worry about optimizing end user downloads.
+The ReleasiumCodePush client supports differential updates, so even though you are releasing your JS bundle and assets on every update, your end users will only actually download the files they need. The service handles this automatically so that you can focus on creating awesome apps and we can worry about optimizing end user downloads.
 
 For more details about how the `release-react` command works, as well as the various parameters it exposes, refer to the [CLI docs](https://github.com/microsoft/code-push/tree/v3.0.1/cli#releasing-updates-react-native). Additionally, if you would prefer to handle running the `react-native bundle` command yourself, and therefore, want an even more flexible solution than `release-react`, refer to the [`release` command](https://github.com/microsoft/code-push/tree/v3.0.1/cli#releasing-updates-general) for more details.
 
 If you run into any issues, or have any questions/comments/feedback, you can ping us within the [#code-push](https://discord.gg/0ZcbPKXt5bWxFdFu) channel on Reactiflux, [e-mail us](mailto:codepushfeed@microsoft.com) and/or check out the [troubleshooting](#debugging--troubleshooting) details below.
 
-*NOTE: CodePush updates should be tested in modes other than Debug mode. In Debug mode, React Native app always downloads JS bundle generated by packager, so JS bundle downloaded by CodePush does not apply.*
+*NOTE: ReleasiumCodePush updates should be tested in modes other than Debug mode. In Debug mode, React Native app always downloads JS bundle generated by packager, so JS bundle downloaded by ReleasiumCodePush does not apply.*
 
 ### Multi-Deployment Testing
 
-In our [getting started](#getting-started) docs, we illustrated how to configure the CodePush plugin using a specific deployment key. However, in order to effectively test your releases, it is critical that you leverage the `Staging` and `Production` deployments that are auto-generated when you first created your CodePush app (or any custom deployments you may have created). This way, you never release an update to your end users that you haven't been able to validate yourself.
+In our [getting started](#getting-started) docs, we illustrated how to configure the ReleasiumCodePush plugin using a specific deployment key. However, in order to effectively test your releases, it is critical that you leverage the `Staging` and `Production` deployments that are auto-generated when you first created your ReleasiumCodePush app (or any custom deployments you may have created). This way, you never release an update to your end users that you haven't been able to validate yourself.
 
 *NOTE: Our client-side rollback feature can help unblock users after installing a release that resulted in a crash, and server-side rollbacks (i.e. `appcenter codepush rollback`) allow you to prevent additional users from installing a bad release once it's been identified. However, it's obviously better if you can prevent an erroneous update from being broadly released in the first place.*
 
 Taking advantage of the `Staging` and `Production` deployments allows you to achieve a workflow like the following (feel free to customize!):
 
-1. Release a CodePush update to your `Staging` deployment using the `appcenter codepush release-react` command (or `appcenter codepush release` if you need more control)
+1. Release a ReleasiumCodePush update to your `Staging` deployment using the `appcenter codepush release-react` command (or `appcenter codepush release` if you need more control)
 
 2. Run your staging/beta build of your app, sync the update from the server, and verify it works as expected
 
@@ -330,7 +334,7 @@ Taking advantage of the `Staging` and `Production` deployments allows you to ach
 
 *NOTE: If you want to take a more cautious approach, you can even choose to perform a "staged rollout" as part of #3, which allows you to mitigate additional potential risk with the update (like did your testing in #2 touch all possible devices/conditions?) by only making the production update available to a percentage of your users (for example `appcenter codepush promote -a <ownerName>/<appName> -s Staging -d Production -r 20`). Then, after waiting for a reasonable amount of time to see if any crash reports or customer feedback comes in, you can expand it to your entire audience by running `appcenter codepush patch -a <ownerName>/<appName> Production -r 100`.*
 
-You'll notice that the above steps refer to a "staging build" and "production build" of your app. If your build process already generates distinct binaries per "environment", then you don't need to read any further, since swapping out CodePush deployment keys is just like handling environment-specific config for any other service your app uses (like Facebook). However, if you're looking for examples (**including demo projects**) on how to setup your build process to accommodate this, then refer to the following sections, depending on the platform(s) your app is targeting:
+You'll notice that the above steps refer to a "staging build" and "production build" of your app. If your build process already generates distinct binaries per "environment", then you don't need to read any further, since swapping out ReleasiumCodePush deployment keys is just like handling environment-specific config for any other service your app uses (like Facebook). However, if you're looking for examples (**including demo projects**) on how to setup your build process to accommodate this, then refer to the following sections, depending on the platform(s) your app is targeting:
 
   * [Android](docs/multi-deployment-testing-android.md)
   * [iOS](docs/multi-deployment-testing-ios.md)
